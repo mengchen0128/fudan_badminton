@@ -12,7 +12,14 @@ class BadmintonCrawler:
     # options = webdriver.ChromeOptions()
     # driver = webdriver.Chrome(service=driver_path, options=options)
 
-    driver = webdriver.Chrome(ChromeDriverManager().install())
+    options = webdriver.ChromeOptions()
+    options.add_argument('--headless')
+
+    options.add_argument('--no-sandbox')
+
+    options.add_argument('--disable-gpu')
+
+    driver = webdriver.Chrome(ChromeDriverManager().install(),options)
 
     now_time = datetime.datetime.now()
     date = now_time + datetime.timedelta(days=2)
