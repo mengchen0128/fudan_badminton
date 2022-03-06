@@ -1,0 +1,40 @@
+name: Go
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  schedule:
+    # run every 10 a.m., which is UTC 2 a.m + 8
+    - cron:  '0 11 * * *'
+  workflow_dispatch:
+
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Check out code
+        uses: actions/checkout@v2
+        
+      - name: Setup Python Version
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8 # Install the python version needed
+      
+      
+      - name: Install Python dependencies
+        run: python -m pip install easyocr
+        
+              
+      - name: Install Python dependencies
+        run: python -m pip install selenium
+        
+      - name: Install Python dependencies
+        run: python -m pip install webdriver_manager
+        
+      - name: run
+        run:  python3 auto_badmintion/BadmintonCrawler.py
