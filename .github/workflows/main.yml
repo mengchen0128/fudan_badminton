@@ -7,7 +7,7 @@ on:
     branches: [ master ]
   schedule:
     # run every 10 a.m., which is UTC 2 a.m + 8
-    - cron:  '0 2 * * *'
+    - cron:  '0 7 * * *'
   workflow_dispatch:
 
 jobs:
@@ -21,4 +21,4 @@ jobs:
         uses: actions/checkout@v2
 
       - name: run
-        run:  python3 BadmintonCrawler.py
+        run:  python3 auto_badmintion/BadmintonCrawler.py
