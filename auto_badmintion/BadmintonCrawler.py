@@ -4,11 +4,15 @@ import easyocr
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
+
 class BadmintonCrawler:
 
-    driver_path = Service(r"chromedriver.exe")
-    options = webdriver.ChromeOptions()
-    driver = webdriver.Chrome(service=driver_path, options=options)
+    # driver_path = Service(r"chromedriver.exe")
+    # options = webdriver.ChromeOptions()
+    # driver = webdriver.Chrome(service=driver_path, options=options)
+
+    driver = webdriver.Chrome(ChromeDriverManager().install())
 
     now_time = datetime.datetime.now()
     date = now_time + datetime.timedelta(days=2)
